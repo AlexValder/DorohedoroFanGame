@@ -36,7 +36,7 @@ def _species_to_str(species : Species) -> str:
         return "sorcerer"
     if species == Species.DEVIL:
         return "devil"
-    return ""
+    return "?"
 
 
 def _align_to_str(align : WorldAlignment) -> str:
@@ -46,7 +46,7 @@ def _align_to_str(align : WorldAlignment) -> str:
         return "Sorcerer World"
     if align == WorldAlignment.HELL:
         return "Hell"
-    return ""
+    return "?"
 
 
 class CharacterBase:
