@@ -29,7 +29,7 @@ class Caiman(chbase.CharacterBase):
         self._kai_meter = 0.0
         self._aikawa_meter = 0.0
     
-    def switch_to_kai(self) -> Caiman:
+    def switch_to_kai(self):
         '''
         Switch to Kai.
         '''
@@ -39,7 +39,7 @@ class Caiman(chbase.CharacterBase):
         self._align = chbase.WorldAlignment.UNKNOWN
         return self
 
-    def switch_to_aikawa(self) -> Caiman:
+    def switch_to_aikawa(self):
         '''
         Switch to Aikawa.
         '''
@@ -49,7 +49,7 @@ class Caiman(chbase.CharacterBase):
         self._align = chbase.WorldAlignment.SORCERER
         return self
     
-    def switch_to_caiman(self) -> Caiman:
+    def switch_to_caiman(self):
         '''
         Switch to (normal) Caiman with amnesia. For Nikaido's magic.
         '''
@@ -61,7 +61,7 @@ class Caiman(chbase.CharacterBase):
         self._align = chbase.WorldAlignment.HOLE
         return self
     
-    def switch_to_ultimate_caiman(self) -> Caiman:
+    def switch_to_ultimate_caiman(self):
         '''
         Switch to (end-of-the-story) Caiman without amnesia.
         '''

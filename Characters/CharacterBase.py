@@ -90,7 +90,7 @@ class CharacterBase(ABC):
         '''
         return f"Hello, I'm {self._name} ({self._gender}), I'm {self._species} from {self._align}"
     
-    def set_partner(self, partner: CharacterBase) -> None:
+    def set_partner(self, partner) -> None:
         '''
         Setting partner. This function affects partner's object as well, if any is set.
         '''

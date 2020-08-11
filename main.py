@@ -4,15 +4,16 @@ import GameManager.game_manager as gm
 
 
 if __name__ == "__main__":
-    char : Caiman = Caiman()
-    nikaido : Nikaido = Nikaido()
+    gm.CHARACTERS["Caiman"] = Caiman()
+    gm.CHARACTERS["Nikaido"] = Nikaido()
 
-    gm.say(char, char.introduce())
-    
-    char.set_partner(nikaido)
+    caiman = gm.CHARACTERS["Caiman"]
+    nikaido = gm.CHARACTERS["Nikaido"]
 
-    gm.say(nikaido, "Do you want gyoza?")
-    gm.say(char, "Yes!")
+    gm.say(caiman, caiman.introduce())
+    gm.say(nikaido, nikaido.introduce())
 
-    gm.say(nikaido, f"Attempting to cast magic: {nikaido.cast_magic()}")
+    print()
 
+    gm.say(nikaido, "Do you want gyoza, Caiman?")
+    gm.say(caiman, "Yes!🥟")
