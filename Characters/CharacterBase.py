@@ -75,8 +75,8 @@ class CharacterBase(ABC):
         self._partner = partner
 
     
-    def introduce(self) -> None:
-        print(f"Hello, I'm {self._name} ({_gender_to_str(self._gender)}), I'm {_species_to_str(self._species)} from {_align_to_str(self._align)}")
+    def introduce(self) -> str:
+        return f"Hello, I'm {self._name} ({_gender_to_str(self._gender)}), I'm {_species_to_str(self._species)} from {_align_to_str(self._align)}"
     
     def set_partner(self, partner) -> None:
         if partner == None:
@@ -93,5 +93,5 @@ class CharacterBase(ABC):
             print(f"{partner._name} is now {self._name}'s partner!")
 
 class Sorcerer(ABC):
-    def cast_magic(self, *targets) -> None:
+    def cast_magic(self, *targets) -> str:
         pass

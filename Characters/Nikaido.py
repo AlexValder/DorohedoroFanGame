@@ -11,5 +11,7 @@ class Nikaido(chbase.CharacterBase, chbase.Sorcerer):
                 80,
                 80
                 )
-    def cast_magic(self, *targets) -> None:
-        print(f"I can't...")
+
+
+    def cast_magic(self, *targets) -> str:
+        return "My psychological trauma holds me back"
