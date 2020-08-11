@@ -5,54 +5,63 @@ from abc import ABC, abstractclassmethod
 
 
 class Gender(Enum):
+    '''
+    Possible values of Gender field for characters
+    '''
     MALE = 0
     FEMALE = 1
     UNKNOWN = 2
 
+    def __str__(self) -> str:
+        if self.value == 0:
+            return "M"
+        if self.value == 1:
+            return "F"
+        return "?"
+
 
 class Species(Enum):
+    '''
+    Possible values of Species field for characters
+    '''
     HUMAN = 0
     SORCERER = 1
     DEVIL = 2
     OTHER = 3
 
+    def __str__(self) -> str:
+        if self.value == 0:
+            return "human"
+        if self.value == 1:
+            return "sorcerer"
+        if self.value == 2:
+            return "devil"
+        return "?"
+
 
 class WorldAlignment(Enum):
+    '''
+    Possible values of Alignment field for characters
+    '''
     HOLE = 0
     SORCERER = 1
     HELL = 2
     UNKNOWN = 3
 
-
-def _gender_to_str(gender : Gender) -> str:
-    if gender == Gender.MALE:
-        return "M"
-    if gender == Gender.FEMALE:
-        return "F"
-    return "?"
-
-
-def _species_to_str(species : Species) -> str:
-    if species == Species.HUMAN:
-        return "human"
-    if species == Species.SORCERER:
-        return "sorcerer"
-    if species == Species.DEVIL:
-        return "devil"
-    return "?"
-
-
-def _align_to_str(align : WorldAlignment) -> str:
-    if align == WorldAlignment.HOLE:
-        return "Hole"
-    if align == WorldAlignment.SORCERER:
-        return "Sorcerer World"
-    if align == WorldAlignment.HELL:
-        return "Hell"
-    return "?"
+    def __str__(self) -> str:
+        if self.value == 0:
+            return "Hole"
+        if self.value == 1:
+            return "Sorcerer world"
+        if self.value == 2:
+            return "Hell"
+        return "?"
 
 
 class CharacterBase(ABC):
+    '''
+    Abstract base class for all characters, that contains general functions and fields, appliable for all characters.
+    '''
     def __init__(
             self,
             name : str = "???",
@@ -76,9 +85,15 @@ class CharacterBase(ABC):
 
     
     def introduce(self) -> str:
-        return f"Hello, I'm {self._name} ({_gender_to_str(self._gender)}), I'm {_species_to_str(self._species)} from {_align_to_str(self._align)}"
+        '''
+        Mostly testing method for character introduction.
+        '''
+        return f"Hello, I'm {self._name} ({self._gender}), I'm {self._species} from {self._align}"
     
-    def set_partner(self, partner) -> None:
+    def set_partner(self, partner: CharacterBase) -> None:
+        '''
+        Setting partner. This function affects partner's object as well, if any is set.
+        '''
         if partner == None:
             if self._partner == None:
                 print(f"{self._name} already has no partner!")
@@ -93,5 +108,8 @@ class CharacterBase(ABC):
             print(f"{partner._name} is now {self._name}'s partner!")
 
 class Sorcerer(ABC):
+    '''
+    Abstract base class for all sorcerer characters, that contains functions and fields, appliable to all sorcerers.
+    '''
     def cast_magic(self, *targets) -> str:
         pass

@@ -6,6 +6,8 @@ import GameManager.game_manager as gm
 if __name__ == "__main__":
     char : Caiman = Caiman()
     nikaido : Nikaido = Nikaido()
+
+    gm.say(char, char.introduce())
     
     char.set_partner(nikaido)
 
