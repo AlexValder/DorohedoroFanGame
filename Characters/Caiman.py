@@ -10,7 +10,14 @@ class AiPersonalities(chbase.Enum):
 
 class Caiman(chbase.CharacterBase):
     def __init__(self):
-        super().__init__("Caiman", chbase.Gender.MALE, chbase.Species.HUMAN, chbase.WorldAlignment.HOLE)
+        super().__init__(
+                "Caiman",
+                chbase.Gender.MALE,
+                chbase.Species.HUMAN,
+                chbase.WorldAlignment.HOLE,
+                100,
+                100
+                )
         self._lives = 7
         self._personality = AiPersonalities.CAIMAN
         self._kai_meter = 0.0

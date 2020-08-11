@@ -1,10 +1,14 @@
 import sys
 from Characters.Caiman import Caiman
+from Characters.Nikaido import Nikaido
+
 
 
 if __name__ == "__main__":
     char : Caiman = Caiman()
-    char.switch_to_caiman().introduce()
-    char.switch_to_aikawa().introduce()
-    char.switch_to_kai().introduce()
-    char.switch_to_ultimate_caiman().introduce()
+    nikaido : Nikaido = Nikaido()
+
+    char.introduce()
+    nikaido.introduce()
+
+    char.set_partner(nikaido)

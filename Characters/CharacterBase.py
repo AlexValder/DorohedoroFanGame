@@ -1,4 +1,6 @@
 from enum import Enum
+from typing import Optional
+from colorama import Fore
 
 
 class Gender(Enum):
@@ -55,16 +57,36 @@ class CharacterBase:
             name : str = "???",
             gender : Gender = Gender.UNKNOWN,
             species : Species = Species.OTHER,
-            align : WorldAlignment = WorldAlignment.UNKNOWN
+            align : WorldAlignment = WorldAlignment.UNKNOWN,
+            max_health : int = 100,
+            health : int = 100,
+            partner = None
                 ):
-        self._name = name
-        self._gender = gender
-        self._species = species
-        self._align = align
-    
-    def introduce(self):
-        print(f"Hello, I'm {self._name} ({_gender_to_str(self._gender)}), I'm {_species_to_str(self._species)} from {_align_to_str(self._align)}")
 
-if __name__ == "__main__":
-    char = CharacterBase("Dude", Gender.MALE, Species.HUMAN, WorldAlignment.HOLE)
-    char.introduce()
+        self._name : str = name
+        self._gender : Gender = gender
+        self._species : Species = species
+        self._align : WorldAlignment = align
+
+        self._max_health : int = max_health
+        self._health : int = health
+
+        self._partner = partner
+
+    
+    def introduce(self) -> None:
+        print(f"Hello, I'm {self._name} ({_gender_to_str(self._gender)}), I'm {_species_to_str(self._species)} from {_align_to_str(self._align)}")
+    
+    def set_partner(self, partner) -> None:
+        if partner == None:
+            if self._partner == None:
+                print(f"{self._name} already has no partner!")
+            else:
+                self._partner._partner = None
+                self._partner = None
+                print(f"{self._name} now has no partner!")
+        else:
+            if self._partner != None:
+                self._partner._partner = None
+            self._partner = partner
+            print(f"{partner._name} is now {self._name}'s partner!")
