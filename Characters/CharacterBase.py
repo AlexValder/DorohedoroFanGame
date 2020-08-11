@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Optional
 from colorama import Fore
+from abc import ABC, abstractclassmethod
 
 
 class Gender(Enum):
@@ -51,7 +52,7 @@ def _align_to_str(align : WorldAlignment) -> str:
     return "?"
 
 
-class CharacterBase:
+class CharacterBase(ABC):
     def __init__(
             self,
             name : str = "???",
@@ -90,3 +91,7 @@ class CharacterBase:
                 self._partner._partner = None
             self._partner = partner
             print(f"{partner._name} is now {self._name}'s partner!")
+
+class Sorcerer(ABC):
+    def cast_magic(self, *targets) -> None:
+        pass

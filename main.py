@@ -12,3 +12,6 @@ if __name__ == "__main__":
     nikaido.introduce()
 
     char.set_partner(nikaido)
+
+    nikaido.cast_magic()
+    
