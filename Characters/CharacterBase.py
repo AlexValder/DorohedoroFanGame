@@ -110,9 +110,10 @@ class CharacterBase(ABC):
         self._inventory[new_item._id] = new_item
 
 
-    # def remove_from_inventory(self, item : str) -> None:
-    #     if item in self._inventory:
-    #         self._inventory.pop(item)
+    def remove_from_inventory(self, index : int) -> None:
+        keys : list = list(self._inventory.keys())
+        if index in range(0, len(keys)):
+            self._inventory.pop(keys[index])
 
 
     def _die(self) -> str:

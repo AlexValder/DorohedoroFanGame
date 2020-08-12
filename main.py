@@ -23,6 +23,11 @@ if __name__ == "__main__":
     caiman.add_to_inventory(items.SmokeBottle(noi))
 
     o.show_inventory(caiman)
+
+    caiman.remove_from_inventory(0)
+    caiman.add_to_inventory(items.SmokeBottle(noi))
+
+    o.show_inventory(caiman)
     # o.say(caiman, caiman.introduce())
     # o.say(nikaido, nikaido.introduce())
 

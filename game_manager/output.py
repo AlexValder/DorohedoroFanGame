@@ -33,11 +33,13 @@ def show_inventory(char : CharacterBase.CharacterBase) -> None:
     print(f"{char._name}'s inventory:")
     for item_id in char._inventory.keys():
         name : str = char._inventory[item_id]._name
-        if len(name) <= 10:
-            print(f"\n{color.Fore.CYAN}{char._inventory[item_id]._name}{color.Fore.RESET}\t\t{char._inventory[item_id]}", end="")
+        if len(name) <= 25:
+            
+            print("\n{:<25}".format(f"{color.Fore.CYAN}{name}{color.Fore.RESET}"), f"{char._inventory[item_id]}", sep="", end="")
         else:
-            shown_name = tw.wrap(name, 10)
+            shown_name = tw.wrap(name, 25)
             for line in shown_name:
                 print(f"\n{color.Fore.CYAN}{line}{color.Fore.RESET}", end="")
-            print(f"\t\t{char._inventory[item_id]}", end="")
+            print(f"{char._inventory[item_id]}", end="")
+        print(f" [ID: {item_id}]", end="")
     print()
