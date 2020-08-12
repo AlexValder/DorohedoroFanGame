@@ -86,7 +86,7 @@ class CharacterBase(ABC):
 
         self._max_attack : int = max_attack
 
-        self._inventory : dict
+        self._inventory : dict = dict()
 
     
     def attack(self, target) -> None:
@@ -148,7 +148,7 @@ class CharacterBase(ABC):
         pass
 
 
-class Sorcerer(ABC):
+class Sorcerer(CharacterBase):
     '''
     Abstract base class for all sorcerer characters, that contains functions and fields, appliable to all sorcerers.
     '''

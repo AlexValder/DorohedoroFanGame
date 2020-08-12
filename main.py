@@ -16,6 +16,7 @@ if __name__ == "__main__":
         gm.next_turn()
         print()
 
+    o.show_inventory(caiman)
     # o.say(caiman, caiman.introduce())
     # o.say(nikaido, nikaido.introduce())
 

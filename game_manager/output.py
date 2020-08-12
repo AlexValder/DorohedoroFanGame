@@ -20,3 +20,13 @@ def health_stats() -> None:
     '''
     for char in CHARACTERS.keys():
         print(f'{color.Fore.YELLOW}{char}{color.Fore.RESET}\t\t{CHARACTERS[char]._health}/{CHARACTERS[char]._max_health}')
+
+def show_inventory(char : CharacterBase.CharacterBase) -> None:
+    '''
+    Showing character's inventory.
+    '''
+    if not char._inventory:
+        print(f"{char._name} has empty inventory.")
+
+    for item in char._inventory.keys():
+        print(f"{color.Fore.GRAY}{item}{color.Fore.RESET}\t\t{char._inventory[item]}")

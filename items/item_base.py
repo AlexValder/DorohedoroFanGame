@@ -4,12 +4,19 @@ from characters.CharacterBase import CharacterBase, Sorcerer, Species
 from numpy.random import randint
 
 
+__all__ = ["SmokeBottle", "MeleeWeapon", "DistantWeapon", "Remains"]
+
+
 class ItemBase(ABC):
     '''
     Abstract base class for all items.
     '''
     def __init__(self, name : str):
         self._name : str = name
+    
+    @abstractclassmethod
+    def __str__(self) -> str:
+        pass
 
 
 class SmokeBottle(ItemBase):
@@ -26,6 +33,10 @@ class SmokeBottle(ItemBase):
         Casting magic on someone via bottle.
         '''
         self._sorcerer.cast_magic(targets)
+    
+
+    def __str__(self) -> str:
+        return f"Bottle of {self._sorcerer._name}'s smoke."
 
 
 class MeleeWeapon(ItemBase):
@@ -43,6 +54,10 @@ class MeleeWeapon(ItemBase):
         '''
         for target in targets:
             target.damage(randint(0, self._max_attack))
+    
+
+    def __str__(self) -> str:
+        return f"{self._name} with max attack of {self._max_attack}."
 
 
 class DistantWeapon(ItemBase):
@@ -60,6 +75,10 @@ class DistantWeapon(ItemBase):
         Shooting target.
         '''
         target.damage(randint(0, 100))
+    
+
+    def __str__(self) -> str:
+        return f"{self._name} with {self._num_of_magazines}x{self._magazine} rounds."
 
 
 class Remains(ItemBase):
@@ -70,6 +89,9 @@ class Remains(ItemBase):
         super().__init__(name)
         self._species : Species = species
         self._devil_tumor : bool = devil_tumor_fine
+        
+        if self._species != Species.SORCERER:
+            self._devil_tumor = False
     
     def resurrect(self) -> Optional[Sorcerer]:
         if self._species == Species.SORCERER:
@@ -77,3 +99,7 @@ class Remains(ItemBase):
         else:
             print(f"Cannot ressurect a {self._species}")
             return None
+    
+
+    def __str__(self) -> str:
+        return f"{self._name}'s remains. Resurrectable: {self._devil_tumor}."

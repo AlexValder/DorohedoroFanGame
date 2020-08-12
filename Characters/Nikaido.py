@@ -2,7 +2,7 @@ from . import CharacterBase as chbase
 from typing import Iterable
 __all__ = ["Nikaido"]
 
-class Nikaido(chbase.CharacterBase, chbase.Sorcerer):
+class Nikaido(chbase.Sorcerer):
     '''
     Class for Nikaido.
     '''
