@@ -1,4 +1,5 @@
 from . import CharacterBase as chbase
+from game_manager.game_manager import CHARACTERS as chars
 __all__ = ["Caiman"]
 
 class AiPersonalities(chbase.Enum):
@@ -41,6 +42,7 @@ class Caiman(chbase.CharacterBase):
         self._name = "Kai"
         self._species = chbase.Species.OTHER
         self._align = chbase.WorldAlignment.UNKNOWN
+        self.set_partner(None)
         return self
 
     def switch_to_aikawa(self):
@@ -51,6 +53,10 @@ class Caiman(chbase.CharacterBase):
         self._name = "Aikawa"
         self._species = chbase.Species.SORCERER
         self._align = chbase.WorldAlignment.SORCERER
+
+        if "Risu" in chars:
+            self.set_partner(chars["Risu"])
+
         return self
     
     def switch_to_caiman(self):
@@ -63,6 +69,10 @@ class Caiman(chbase.CharacterBase):
         self._name = "Caiman"
         self._species = chbase.Species.HUMAN
         self._align = chbase.WorldAlignment.HOLE
+
+        if "Nikaido" in chars:
+            self.set_partner(chars["Nikaido"])
+
         return self
     
     def switch_to_ultimate_caiman(self):
@@ -75,20 +85,34 @@ class Caiman(chbase.CharacterBase):
         self._name = "Caiman"
         self._species = chbase.Species.OTHER
         self._align = chbase.WorldAlignment.HOLE
+
+        if "Nikaido" in chars:
+            self.set_partner(chars["Nikaido"])
+
         return self
     
     def _die(self) -> str:
+        '''
+        Caiman-specific _die() function.
+        '''
+        # If there are still spare heads.
         if self._lives > 0:
             self._lives -= 1
+            # If he's Aikawa, switch to Kai.
             if self._personality == AiPersonalities.KAI:
                 self.switch_to_aikawa()
+            # If he's Kai, switch to Aikawa.
             elif self._personality == AiPersonalities.AIKAWA:
                 self.switch_to_kai()
+            # If he's just Caiman.
             else:
+                # If he's more of Kai, switch to Kai for the first time.
                 if self._kai_meter > .5 and self._kai_meter > self._aikawa_meter:
                     self.switch_to_kai()
+                # If he's more of Aikawa, switch to Aikawa for the first time.
                 elif self._aikawa_meter > .5 and self._aikawa_meter > self._kai_meter:
                     self.switch_to_aikawa()
             return f"{self._name} died but still alive! Wow!"
+        # Last head was destroyed.
         else:
-            return "Caiman is gone. Game Over."
+            return "Caiman is gone."

@@ -10,7 +10,7 @@ if __name__ == "__main__":
     nikaido = gm.CHARACTERS["Nikaido"]
     shin = gm.CHARACTERS["Shin"]
 
-    for _ in range(0, 10):
+    for _ in range(0, 5):
         sleep(1.0)
         gm.next_turn()
         print()

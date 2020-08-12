@@ -93,11 +93,13 @@ class CharacterBase(ABC):
         if hasattr(target, "damage"):
             target.damage(random.randint(0, self._max_attack))
 
+
     def heal(self, heal_value : int) -> None:
         self._health += heal_value
         if self._health > self._max_health:
             self._health = self._max_health
     
+
     def damage(self, damage_value : int) -> None:
         self._health -= damage_value
         if self._health <= 0:
@@ -116,12 +118,14 @@ class CharacterBase(ABC):
     def _die(self) -> str:
         return f"{self._name} died!"
     
+
     def introduce(self) -> str:
         '''
         Mostly testing method for character introduction.
         '''
         return f"Hello, I'm {self._name} ({self._gender}), I'm {self._species} from {self._align}"
     
+
     def set_partner(self, partner) -> None:
         '''
         Setting partner. This function affects partner's object as well, if any is set.
@@ -142,6 +146,7 @@ class CharacterBase(ABC):
     @abstractclassmethod
     def action(self) -> None:
         pass
+
 
 class Sorcerer(ABC):
     '''
