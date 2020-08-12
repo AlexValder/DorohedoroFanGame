@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Optional
 from colorama import Fore
 from abc import ABC, abstractclassmethod
+import random
 
 
 class Gender(Enum):
@@ -70,7 +71,8 @@ class CharacterBase(ABC):
             align : WorldAlignment = WorldAlignment.UNKNOWN,
             max_health : int = 100,
             health : int = 100,
-            partner = None
+            partner = None,
+            max_attack : int = 10
                 ):
 
         self._name : str = name
@@ -83,6 +85,24 @@ class CharacterBase(ABC):
 
         self._partner = partner
 
+        self._max_attack : int = max_attack
+    
+    def attack(self, target) -> None:
+        if hasattr(target, "damage"):
+            target.damage(random.randint(0, self._max_attack))
+
+    def heal(self, heal_value : int) -> None:
+        self._health += heal_value
+        if self._health > self._max_health:
+            self._health = self._max_health
+    
+    def damage(self, damage_value : int) -> None:
+        self._health -= damage_value
+        if self._health <= 0:
+            self._die()
+    
+    def _die(self) -> str:
+        return f"{self._name} died!"
     
     def introduce(self) -> str:
         '''

@@ -1,1 +1,1 @@
-__all__ = ["Caiman", "Nikaido"]
+__all__ = ["Caiman", "Nikaido", "Shin"]
