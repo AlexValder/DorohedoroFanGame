@@ -14,8 +14,11 @@ class Nikaido(chbase.CharacterBase, chbase.Sorcerer):
                 80,
                 80
                 )
+
+
     def action(self) -> None:
         print("Nikaido wants to watch people eat.")
+
 
     def cast_magic(self, *targets) -> str:
         '''
