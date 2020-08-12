@@ -4,6 +4,9 @@ from abc import ABC, abstractclassmethod
 import random
 
 
+__all__ = ["CharacterBase", "Gender", "Species", "Sorcerer"]
+
+
 class Gender(Enum):
     '''
     Possible values of Gender field for characters
@@ -133,16 +136,14 @@ class CharacterBase(ABC):
         '''
         if partner == None:
             if self._partner == None:
-                print(f"{self._name} already has no partner!")
+                return
             else:
                 self._partner._partner = None
                 self._partner = None
-                print(f"{self._name} now has no partner!")
         else:
             if self._partner != None:
                 self._partner._partner = None
             self._partner = partner
-            print(f"{partner._name} is now {self._name}'s partner!")
     
     @abstractclassmethod
     def action(self) -> None:

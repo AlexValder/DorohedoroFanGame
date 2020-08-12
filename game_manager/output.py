@@ -2,7 +2,7 @@ import colorama as color
 import textwrap as tw
 from typing import Dict
 from characters import character_base
-from .game_manager import CHARACTERS
+from . import game_manager as gm
 
 
 __all__ = ["say"]
@@ -19,8 +19,22 @@ def health_stats() -> None:
     '''
     Displaying characters' current health
     '''
-    for char in CHARACTERS.keys():
-        print(f'{color.Fore.YELLOW}{char}{color.Fore.RESET}\t\t{CHARACTERS[char]._health}/{CHARACTERS[char]._max_health}')
+    for char in gm.CHARACTERS.keys():
+        print(f'{color.Fore.YELLOW}{char}{color.Fore.RESET}\t\t{gm.CHARACTERS[char]._health}/{gm.CHARACTERS[char]._max_health}')
+
+
+def print_stats() -> None:
+    __stas : Dict[str, str] = {
+        "Name" : gm.PROTAG._name,
+        "Gender" : gm.PROTAG._gender,
+        "Species" : gm.PROTAG._species,
+        "Health" : f"{gm.PROTAG._health}/{gm.PROTAG._max_health}",
+    }
+
+    for stat in __stas:
+        print("{:<20}".format(f"{color.Fore.CYAN}{stat}{color.Fore.RESET}"), __stas[stat], sep = "")
+    print()
+
 
 def show_inventory(char : character_base.CharacterBase) -> None:
     '''
@@ -34,7 +48,6 @@ def show_inventory(char : character_base.CharacterBase) -> None:
     for item_id in char._inventory.keys():
         name : str = char._inventory[item_id]._name
         if len(name) <= 25:
-            
             print("\n{:<25}".format(f"{color.Fore.CYAN}{name}{color.Fore.RESET}"), f"{char._inventory[item_id]}", sep="", end="")
         else:
             shown_name = tw.wrap(name, 25)
