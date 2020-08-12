@@ -76,3 +76,19 @@ class Caiman(chbase.CharacterBase):
         self._species = chbase.Species.OTHER
         self._align = chbase.WorldAlignment.HOLE
         return self
+    
+    def _die(self) -> str:
+        if self._lives > 0:
+            self._lives -= 1
+            if self._personality == AiPersonalities.KAI:
+                self.switch_to_aikawa()
+            elif self._personality == AiPersonalities.AIKAWA:
+                self.switch_to_kai()
+            else:
+                if self._kai_meter > .5 and self._kai_meter > self._aikawa_meter:
+                    self.switch_to_kai()
+                elif self._aikawa_meter > .5 and self._aikawa_meter > self._kai_meter:
+                    self.switch_to_aikawa()
+            return f"{self._name} died but still alive! Wow!"
+        else:
+            return "Caiman is gone. Game Over."

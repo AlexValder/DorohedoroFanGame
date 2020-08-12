@@ -1,6 +1,6 @@
 import colorama as color
 from typing import Dict
-from Characters import CharacterBase
+from characters import CharacterBase
 from .game_manager import CHARACTERS
 
 

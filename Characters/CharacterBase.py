@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Iterable
+from typing import Iterable, Dict
 from abc import ABC, abstractclassmethod
 import random
 
@@ -85,6 +85,9 @@ class CharacterBase(ABC):
         self._partner = partner
 
         self._max_attack : int = max_attack
+
+        self._inventory : dict
+
     
     def attack(self, target) -> None:
         if hasattr(target, "damage"):
@@ -100,6 +103,16 @@ class CharacterBase(ABC):
         if self._health <= 0:
             self._die()
     
+
+    def add_to_inventory(self, new_item) -> None:
+        self._inventory[new_item._name] = new_item
+    
+
+    def remove_from_inventory(self, item : str) -> None:
+        if item in self._inventory:
+            self._inventory.pop(item)
+
+
     def _die(self) -> str:
         return f"{self._name} died!"
     

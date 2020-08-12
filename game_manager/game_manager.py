@@ -1,9 +1,10 @@
-from Characters import CharacterBase
+from characters import CharacterBase
 from typing import Dict
 import colorama as color
-from Characters.Caiman import Caiman
-from Characters.Nikaido import Nikaido
-from Characters.Shin import Shin
+from characters.Caiman import Caiman
+from characters.Nikaido import Nikaido
+from characters.Shin import Shin
+from characters.Noi import Noi
 
 
 __all__ = ["CHARACTERS", "health_stats"]
@@ -20,6 +21,11 @@ def init_game() -> None:
     CHARACTERS["Caiman"] = Caiman()
     CHARACTERS["Nikaido"] = Nikaido()
     CHARACTERS["Shin"] = Shin()
+    CHARACTERS["Noi"] = Noi()
+
+    CHARACTERS["Caiman"].set_partner(CHARACTERS["Nikaido"])
+    CHARACTERS["Shin"].set_partner(CHARACTERS["Noi"])
+
 
     print(f"{color.Fore.RED}GAME HAS STARTED{color.Fore.RESET}")
 

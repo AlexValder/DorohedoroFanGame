@@ -1,5 +1,5 @@
-import GameManager.game_manager as gm
-import GameManager.output as o
+import game_manager.game_manager as gm
+import game_manager.output as o
 from time import sleep
 
 
