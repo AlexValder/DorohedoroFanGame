@@ -1,23 +1,34 @@
-import colorama as color
-from typing import Dict
 from Characters import CharacterBase
+from typing import Dict
+import colorama as color
+from Characters.Caiman import Caiman
+from Characters.Nikaido import Nikaido
+from Characters.Shin import Shin
 
-__all__ = ["say", "health_stats"]
+
+__all__ = ["CHARACTERS", "health_stats"]
 
 
 CHARACTERS : Dict[str, CharacterBase.CharacterBase] = dict()
+TURNS : int = 0
+
+def init_game() -> None:
+    TURNS = 0
+
+    color.init()
+
+    CHARACTERS["Caiman"] = Caiman()
+    CHARACTERS["Nikaido"] = Nikaido()
+    CHARACTERS["Shin"] = Shin()
+
+    print(f"{color.Fore.RED}GAME HAS STARTED{color.Fore.RESET}")
 
 
-def say(character : CharacterBase.CharacterBase, message : str) -> None:
-    '''
-    Character's replies and words. TODO: per-character reveal?
-    '''
-    print(f'{color.Fore.GREEN}[[{character._name}]]{color.Fore.RESET}\t{message}')
+def next_turn() -> None:
+    global TURNS
+    print(f"{color.Fore.YELLOW}Turn: {TURNS}{color.Fore.RESET}")
 
-
-def health_stats() -> None:
-    '''
-    Displaying characters' current health
-    '''
     for char in CHARACTERS.keys():
-        print(f'{color.Fore.YELLOW}{char}{color.Fore.RESET}\t\t{CHARACTERS[char]._health}/{CHARACTERS[char]._max_health}')
+        CHARACTERS[char].action()
+    
+    TURNS += 1

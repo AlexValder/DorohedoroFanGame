@@ -22,12 +22,16 @@ class Caiman(chbase.CharacterBase):
                 chbase.Species.HUMAN,
                 chbase.WorldAlignment.HOLE,
                 100,
-                100
+                100,
+                20
                 )
         self._lives = 7
         self._personality = AiPersonalities.CAIMAN
         self._kai_meter = 0.0
         self._aikawa_meter = 0.0
+    
+    def action(self) -> None:
+        print("Caiman wants gyoza.")
     
     def switch_to_kai(self):
         '''

@@ -71,8 +71,8 @@ class CharacterBase(ABC):
             align : WorldAlignment = WorldAlignment.UNKNOWN,
             max_health : int = 100,
             health : int = 100,
-            partner = None,
-            max_attack : int = 10
+            max_attack : int = 10,
+            partner = None
                 ):
 
         self._name : str = name
@@ -126,6 +126,9 @@ class CharacterBase(ABC):
                 self._partner._partner = None
             self._partner = partner
             print(f"{partner._name} is now {self._name}'s partner!")
+    
+    def action(self) -> None:
+        pass
 
 class Sorcerer(ABC):
     '''

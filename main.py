@@ -1,37 +1,39 @@
-from Characters.Caiman import Caiman
-from Characters.Nikaido import Nikaido
-from Characters.Shin import Shin
 import GameManager.game_manager as gm
+import GameManager.output as o
+from time import sleep
 
 
 if __name__ == "__main__":
-    gm.CHARACTERS["Caiman"] = Caiman()
-    gm.CHARACTERS["Nikaido"] = Nikaido()
-    gm.CHARACTERS["Shin"] = Shin()
-
+    gm.init_game()
+    
     caiman = gm.CHARACTERS["Caiman"]
     nikaido = gm.CHARACTERS["Nikaido"]
     shin = gm.CHARACTERS["Shin"]
 
-    gm.say(caiman, caiman.introduce())
-    gm.say(nikaido, nikaido.introduce())
+    for _ in range(0, 10):
+        sleep(1.0)
+        gm.next_turn()
+        print()
 
-    print()
+    # o.say(caiman, caiman.introduce())
+    # o.say(nikaido, nikaido.introduce())
 
-    gm.say(nikaido, "Do you want gyoza, Caiman?")
-    gm.say(caiman, "Yes!🥟")
+    # print()
 
-    print()
+    # o.say(nikaido, "Do you want gyoza, Caiman?")
+    # o.say(caiman, "Yes!🥟")
 
-    gm.say(shin, shin.introduce())
+    # print()
+
+    # o.say(shin, shin.introduce())
     
-    print()
+    # print()
 
-    gm.health_stats()
+    # o.health_stats()
 
-    print("Shin is about to attack Caiman and Nikaido!\n")
+    # print("Shin is about to attack Caiman and Nikaido!\n")
 
-    shin.attack(caiman)
-    shin.attack(nikaido)
+    # shin.attack(caiman)
+    # shin.attack(nikaido)
 
-    gm.health_stats()
+    # o.health_stats()

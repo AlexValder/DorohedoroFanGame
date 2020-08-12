@@ -16,6 +16,9 @@ class Shin(chbase.CharacterBase, chbase.Sorcerer):
                 50
                 )
     
+    def action(self) -> None:
+        print("Shin wants to fight strong enemies.")
+    
     def cast_magic(self, *targets) -> str:
         '''
         TODO: makes targets immobilized?
