@@ -9,7 +9,7 @@ class ItemBase(ABC):
     Abstract base class for all items.
     '''
     def __init__(self, name : str):
-        self._name = name
+        self._name : str = name
 
 
 class SmokeBottle(ItemBase):
@@ -22,6 +22,9 @@ class SmokeBottle(ItemBase):
     
 
     def use(self, targets : Iterable) -> None:
+        '''
+        Casting magic on someone via bottle.
+        '''
         self._sorcerer.cast_magic(targets)
 
 
@@ -35,6 +38,9 @@ class MeleeWeapon(ItemBase):
     
 
     def attack(self, targets : Iterable[CharacterBase]) -> None:
+        '''
+        Attacking people with melee weapon.
+        '''
         for target in targets:
             target.damage(randint(0, self._max_attack))
 
@@ -50,4 +56,7 @@ class DistantWeapon(ItemBase):
     
 
     def shoot(self, target : CharacterBase) -> None:
+        '''
+        Shooting target.
+        '''
         target.damage(randint(0, 100))
