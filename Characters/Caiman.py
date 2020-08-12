@@ -1,4 +1,4 @@
-from . import CharacterBase as chbase
+from . import character_base as chbase
 from game_manager import game_manager as gm
 __all__ = ["Caiman"]
 

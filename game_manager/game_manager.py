@@ -1,16 +1,16 @@
-from characters import CharacterBase
+from characters import character_base
 from typing import Dict
 import colorama as color
-from characters.Caiman import Caiman
-from characters.Nikaido import Nikaido
-from characters.Shin import Shin
-from characters.Noi import Noi
+from characters.caiman import Caiman
+from characters.nikaido import Nikaido
+from characters.shin import Shin
+from characters.noi import Noi
 
 
 __all__ = ["CHARACTERS", "health_stats"]
 
 
-CHARACTERS : Dict[str, CharacterBase.CharacterBase] = dict()
+CHARACTERS : Dict[str, character_base.CharacterBase] = dict()
 TURNS : int = 0
 
 def init_game() -> None:

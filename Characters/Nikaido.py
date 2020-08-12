@@ -1,4 +1,4 @@
-from . import CharacterBase as chbase
+from . import character_base as chbase
 from typing import Iterable
 __all__ = ["Nikaido"]
 

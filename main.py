@@ -2,7 +2,7 @@ import game_manager.game_manager as gm
 import game_manager.output as o
 import items.item_base as items
 from time import sleep
-from characters.CharacterBase import CharacterBase, Sorcerer
+from characters.character_base import CharacterBase, Sorcerer
 
 
 if __name__ == "__main__":
