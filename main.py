@@ -24,5 +24,14 @@ if __name__ == "__main__":
     print()
 
     gm.say(shin, shin.introduce())
-    for char in gm.CHARACTERS.keys():
-        print(f"{char}\t\t{gm.CHARACTERS[char]._health}/{gm.CHARACTERS[char]._max_health}")
+    
+    print()
+
+    gm.health_stats()
+
+    print("Shin is about to attack Caiman and Nikaido!\n")
+
+    shin.attack(caiman)
+    shin.attack(nikaido)
+
+    gm.health_stats()
