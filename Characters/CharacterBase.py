@@ -1,6 +1,5 @@
 from enum import Enum
-from typing import Optional
-from colorama import Fore
+from typing import Iterable
 from abc import ABC, abstractclassmethod
 import random
 
@@ -127,6 +126,7 @@ class CharacterBase(ABC):
             self._partner = partner
             print(f"{partner._name} is now {self._name}'s partner!")
     
+    @abstractclassmethod
     def action(self) -> None:
         pass
 
@@ -134,5 +134,6 @@ class Sorcerer(ABC):
     '''
     Abstract base class for all sorcerer characters, that contains functions and fields, appliable to all sorcerers.
     '''
-    def cast_magic(self, *targets) -> str:
+    @abstractclassmethod
+    def cast_magic(self, targets : Iterable) -> str:
         pass

@@ -1,4 +1,5 @@
 from . import CharacterBase as chbase
+from typing import Iterable
 __all__ = ["Nikaido"]
 
 class Nikaido(chbase.CharacterBase, chbase.Sorcerer):
@@ -20,7 +21,7 @@ class Nikaido(chbase.CharacterBase, chbase.Sorcerer):
         print("Nikaido wants to watch people eat.")
 
 
-    def cast_magic(self, *targets) -> str:
+    def cast_magic(self, targets : Iterable) -> str:
         '''
         TODO: time-reversing&rewriting magic.
         '''
