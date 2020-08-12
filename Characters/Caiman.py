@@ -1,5 +1,5 @@
 from . import CharacterBase as chbase
-from game_manager.game_manager import CHARACTERS as chars
+from game_manager import game_manager as gm
 __all__ = ["Caiman"]
 
 class AiPersonalities(chbase.Enum):
@@ -54,8 +54,8 @@ class Caiman(chbase.CharacterBase):
         self._species = chbase.Species.SORCERER
         self._align = chbase.WorldAlignment.SORCERER
 
-        if "Risu" in chars:
-            self.set_partner(chars["Risu"])
+        if "Risu" in gm.CHARACTERS:
+            self.set_partner(gm.CHARACTERS["Risu"])
 
         return self
     
@@ -70,8 +70,8 @@ class Caiman(chbase.CharacterBase):
         self._species = chbase.Species.HUMAN
         self._align = chbase.WorldAlignment.HOLE
 
-        if "Nikaido" in chars:
-            self.set_partner(chars["Nikaido"])
+        if "Nikaido" in gm.CHARACTERS:
+            self.set_partner(gm.CHARACTERS["Nikaido"])
 
         return self
     
@@ -86,8 +86,8 @@ class Caiman(chbase.CharacterBase):
         self._species = chbase.Species.OTHER
         self._align = chbase.WorldAlignment.HOLE
 
-        if "Nikaido" in chars:
-            self.set_partner(chars["Nikaido"])
+        if "Nikaido" in gm.CHARACTERS:
+            self.set_partner(gm.CHARACTERS["Nikaido"])
 
         return self
     

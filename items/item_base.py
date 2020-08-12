@@ -1,6 +1,6 @@
 from abc import ABC, abstractclassmethod
-from typing import Iterable
-from characters.CharacterBase import CharacterBase, Sorcerer
+from typing import Iterable, Optional
+from characters.CharacterBase import CharacterBase, Sorcerer, Species
 from numpy.random import randint
 
 
@@ -60,3 +60,20 @@ class DistantWeapon(ItemBase):
         Shooting target.
         '''
         target.damage(randint(0, 100))
+
+
+class Remains(ItemBase):
+    '''
+    Class for all kinds of remains (bodies, heads, devil tumors).
+    '''
+    def __init__(self, name : str, species : Species, devil_tumor_fine : bool):
+        super().__init__(name)
+        self._species : Species = species
+        self._devil_tumor : bool = devil_tumor_fine
+    
+    def resurrect(self) -> Optional[Sorcerer]:
+        if self._species == Species.SORCERER:
+            return Sorcerer()
+        else:
+            print(f"Cannot ressurect a {self._species}")
+            return None

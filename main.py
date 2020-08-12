@@ -9,8 +9,9 @@ if __name__ == "__main__":
     caiman = gm.CHARACTERS["Caiman"]
     nikaido = gm.CHARACTERS["Nikaido"]
     shin = gm.CHARACTERS["Shin"]
+    noi = gm.CHARACTERS["Noi"]
 
-    for _ in range(0, 5):
+    for _ in range(0, 3):
         sleep(1.0)
         gm.next_turn()
         print()
