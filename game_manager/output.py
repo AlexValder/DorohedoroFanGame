@@ -1,4 +1,5 @@
 import colorama as color
+import textwrap as tw
 from typing import Dict
 from characters import CharacterBase
 from .game_manager import CHARACTERS
@@ -27,6 +28,16 @@ def show_inventory(char : CharacterBase.CharacterBase) -> None:
     '''
     if not char._inventory:
         print(f"{char._name} has empty inventory.")
+        return
 
-    for item in char._inventory.keys():
-        print(f"{color.Fore.GRAY}{item}{color.Fore.RESET}\t\t{char._inventory[item]}")
+    print(f"{char._name}'s inventory:")
+    for item_id in char._inventory.keys():
+        name : str = char._inventory[item_id]._name
+        if len(name) <= 10:
+            print(f"\n{color.Fore.CYAN}{char._inventory[item_id]._name}{color.Fore.RESET}\t\t{char._inventory[item_id]}", end="")
+        else:
+            shown_name = tw.wrap(name, 10)
+            for line in shown_name:
+                print(f"\n{color.Fore.CYAN}{line}{color.Fore.RESET}", end="")
+            print(f"\t\t{char._inventory[item_id]}", end="")
+    print()

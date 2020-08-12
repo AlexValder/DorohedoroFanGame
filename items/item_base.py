@@ -11,8 +11,12 @@ class ItemBase(ABC):
     '''
     Abstract base class for all items.
     '''
+    __item_count : int = 0
+
     def __init__(self, name : str):
         self._name : str = name
+        self._id = ItemBase.__item_count
+        ItemBase.__item_count += 1
     
     @abstractclassmethod
     def __str__(self) -> str:
@@ -23,8 +27,8 @@ class SmokeBottle(ItemBase):
     '''
     Class for smoke bottles.
     '''
-    def __init__(self, name : str, sorcerer : Sorcerer):
-        super().__init__(name)
+    def __init__(self, sorcerer):
+        super().__init__(f"Smoke Bottle")
         self._sorcerer : Sorcerer = sorcerer
     
 

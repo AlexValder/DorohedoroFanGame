@@ -1,6 +1,8 @@
 import game_manager.game_manager as gm
 import game_manager.output as o
+import items.item_base as items
 from time import sleep
+from characters.CharacterBase import CharacterBase, Sorcerer
 
 
 if __name__ == "__main__":
@@ -11,10 +13,14 @@ if __name__ == "__main__":
     shin = gm.CHARACTERS["Shin"]
     noi = gm.CHARACTERS["Noi"]
 
-    for _ in range(0, 3):
-        sleep(1.0)
-        gm.next_turn()
-        print()
+    # for _ in range(0, 3):
+    #     sleep(1.0)
+    #     gm.next_turn()
+    #     print()
+
+    caiman.add_to_inventory(items.MeleeWeapon("Knife", 45))
+    caiman.add_to_inventory(items.MeleeWeapon("Knife", 45))
+    caiman.add_to_inventory(items.SmokeBottle(noi))
 
     o.show_inventory(caiman)
     # o.say(caiman, caiman.introduce())

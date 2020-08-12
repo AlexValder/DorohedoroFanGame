@@ -107,12 +107,12 @@ class CharacterBase(ABC):
     
 
     def add_to_inventory(self, new_item) -> None:
-        self._inventory[new_item._name] = new_item
-    
+        self._inventory[new_item._id] = new_item
 
-    def remove_from_inventory(self, item : str) -> None:
-        if item in self._inventory:
-            self._inventory.pop(item)
+
+    # def remove_from_inventory(self, item : str) -> None:
+    #     if item in self._inventory:
+    #         self._inventory.pop(item)
 
 
     def _die(self) -> str:
