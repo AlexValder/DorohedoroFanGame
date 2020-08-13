@@ -36,8 +36,8 @@ def next_turn() -> None:
     global TURNS
     print(f"{color.Fore.YELLOW}Turn: {TURNS}{color.Fore.RESET}")
 
-    for char in CHARACTERS.keys():
-        CHARACTERS[char].action()
+    for char in CHARACTERS.values():
+        char.action()
     
     TURNS += 1
 

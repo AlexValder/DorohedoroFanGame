@@ -19,8 +19,8 @@ def health_stats() -> None:
     '''
     Displaying characters' current health
     '''
-    for char in gm.CHARACTERS.keys():
-        print(f'{color.Fore.YELLOW}{char}{color.Fore.RESET}\t\t{gm.CHARACTERS[char]._health}/{gm.CHARACTERS[char]._max_health}')
+    for name, char in gm.CHARACTERS.items():
+        print(f'{color.Fore.YELLOW}{name}{color.Fore.RESET}\t\t{char._health}/{char._max_health}')
 
 
 def print_stats() -> None:
