@@ -4,6 +4,9 @@ from ..characters import character_base as chbase
 
 
 class World(Enum):
+    '''
+    Enumuration of all possible worlds.
+    '''
     HOLE = 0
     SORCERER = 1
     HELL = 2
@@ -22,16 +25,14 @@ class World(Enum):
 
 
 class Location:
-    __world : World
-    __name : str
-    __characters : List[chbase.CharacterBase]
-    __connected_with : Set[Tuple[World, str]]
-
+    '''
+    Class for all locations in the game.
+    '''
     def __init__(self, world : World, name : str, *connected_with : Tuple[World, str]):
-        self.__world = world
-        self.__name = name
-        self.__characters = []
-        self.__connected_with = set(connected_with)
+        self.__world : World = world
+        self.__name : str = name
+        self.__characters : List[chbase.CharacterBase] = []
+        self.__connected_with : Set[Tuple[World, str]] = set(connected_with)
 
 
 LOCATIONS : Dict[Tuple[World, str], Location] = {

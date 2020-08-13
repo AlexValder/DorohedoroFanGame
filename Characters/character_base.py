@@ -65,16 +65,6 @@ class CharacterBase(ABC):
     '''
     Abstract base class for all characters, that contains general functions and fields, appliable for all characters.
     '''
-    _name : str
-    _gender : Gender
-    _species : Species
-    _align : WorldAlignment
-    _max_health : int
-    _health : int
-    _max_attack : int
-    _inventory : dict
-    _location : Tuple[str, str]
-
     def __init__(
             self,
             name : str = "???",
@@ -88,19 +78,19 @@ class CharacterBase(ABC):
             partner = None
                 ):
 
-        self._name = name
-        self._gender = gender
-        self._species = species
-        self._align = align
+        self._name : str = name
+        self._gender : Gender = gender
+        self._species : Species = species
+        self._align : WorldAlignment = align
 
-        self._max_health = max_health
-        self._health = health
+        self._max_health : int = max_health
+        self._health : int = health
 
         self._partner = partner
 
-        self._max_attack = max_attack
+        self._max_attack : int = max_attack
 
-        self._inventory = dict()
+        self._inventory : dict = dict()
 
     
     def attack(self, target) -> None:
