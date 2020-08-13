@@ -1,6 +1,6 @@
 from abc import ABC, abstractclassmethod
 from typing import Iterable, Optional
-from characters.CharacterBase import CharacterBase, Sorcerer, Species
+from characters.character_base import CharacterBase, Sorcerer, Species
 from numpy.random import randint
 
 

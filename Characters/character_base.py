@@ -1,7 +1,10 @@
 from enum import Enum
-from typing import Iterable, Dict
+from typing import Iterable, Dict, Tuple
 from abc import ABC, abstractclassmethod
 import random
+
+
+__all__ = ["CharacterBase", "Gender", "Species", "Sorcerer"]
 
 
 class Gender(Enum):
@@ -62,6 +65,16 @@ class CharacterBase(ABC):
     '''
     Abstract base class for all characters, that contains general functions and fields, appliable for all characters.
     '''
+    _name : str
+    _gender : Gender
+    _species : Species
+    _align : WorldAlignment
+    _max_health : int
+    _health : int
+    _max_attack : int
+    _inventory : dict
+    _location : Tuple[str, str]
+
     def __init__(
             self,
             name : str = "???",
@@ -71,22 +84,23 @@ class CharacterBase(ABC):
             max_health : int = 100,
             health : int = 100,
             max_attack : int = 10,
+            location : Tuple[str, str] = ("", ""),
             partner = None
                 ):
 
-        self._name : str = name
-        self._gender : Gender = gender
-        self._species : Species = species
-        self._align : WorldAlignment = align
+        self._name = name
+        self._gender = gender
+        self._species = species
+        self._align = align
 
-        self._max_health : int = max_health
-        self._health : int = health
+        self._max_health = max_health
+        self._health = health
 
         self._partner = partner
 
-        self._max_attack : int = max_attack
+        self._max_attack = max_attack
 
-        self._inventory : dict = dict()
+        self._inventory = dict()
 
     
     def attack(self, target) -> None:
@@ -110,9 +124,10 @@ class CharacterBase(ABC):
         self._inventory[new_item._id] = new_item
 
 
-    # def remove_from_inventory(self, item : str) -> None:
-    #     if item in self._inventory:
-    #         self._inventory.pop(item)
+    def remove_from_inventory(self, index : int) -> None:
+        keys : list = list(self._inventory.keys())
+        if index in range(0, len(keys)):
+            self._inventory.pop(keys[index])
 
 
     def _die(self) -> str:
@@ -132,16 +147,14 @@ class CharacterBase(ABC):
         '''
         if partner == None:
             if self._partner == None:
-                print(f"{self._name} already has no partner!")
+                return
             else:
                 self._partner._partner = None
                 self._partner = None
-                print(f"{self._name} now has no partner!")
         else:
             if self._partner != None:
                 self._partner._partner = None
             self._partner = partner
-            print(f"{partner._name} is now {self._name}'s partner!")
     
     @abstractclassmethod
     def action(self) -> None:

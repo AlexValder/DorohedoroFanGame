@@ -1,1 +1,1 @@
-__all__ = ["output"]
+__all__ = ["game_manager", "output"]
