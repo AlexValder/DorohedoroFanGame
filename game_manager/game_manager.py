@@ -28,8 +28,8 @@ def init_game() -> None:
 
     global PROTAG
     PROTAG = CHARACTERS["Caiman"]
-
-    print(f"{color.Fore.RED}GAME HAS STARTED{color.Fore.RESET}")
+    
+    ot.prepare_UI()
 
 
 def next_turn() -> None:

@@ -3,9 +3,27 @@ import textwrap as tw
 from typing import Dict
 from characters import character_base
 from . import game_manager as gm
+import os
+
+__all__ = ["say", "health_stats", "print_stats", "show_inventory"]
 
 
-__all__ = ["say"]
+__WIDTH : int = 100
+__HEIGHT : int = 50
+
+
+def __clear() -> None:
+    os.system("cls")
+
+
+def prepare_UI() -> None:
+    __clear()
+    print(f"PROTAGONIST: {color.Fore.GREEN}{gm.PROTAG._name}{color.Fore.RESET}")
+    print("╔", "".join("═" * (__WIDTH - 2)), "╗", sep='')
+    for _ in range(0, __HEIGHT - 2):
+        print("║", "".join(" " * (__WIDTH - 2)), "║", sep='')
+    print("╚", "".join("═" * (__WIDTH - 2)), "╝", sep='')
+    
 
 
 def say(character : character_base.CharacterBase, message : str) -> None:

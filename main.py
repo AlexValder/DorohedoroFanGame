@@ -19,6 +19,10 @@ if __name__ == "__main__":
 
     command : str
     while True:
-        command = input()
+        print("AVAILABLE COMMANDS:")
+        for avcom in gm.COMMANDS.keys():
+            print(avcom)
+        command = input("Enter command: ")
+        o.prepare_UI()
         if command in gm.COMMANDS.keys():
             gm.COMMANDS[command]()
